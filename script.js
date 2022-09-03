@@ -206,7 +206,7 @@ const showDetails = (information) =>{
         <div class = "h-5/6" ><img src="${information.image_url}" class="h-[200px] lg:h-[500px] w-full" alt="${information.title}"/></div>
         <div class = "lg:flex justify-between items-center gap-5 space-y-5 py-5">
         <div class = "w-3/4 flex items-center gap-5">
-              <img src="${information.author.img}"class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" />
+              <img src="${information.author.img}" class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" />
               <h2 class="font-bold text-dark">
               ${information.author.name ? information.author.name :'no data found'}
               </h2>

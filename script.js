@@ -11,6 +11,23 @@ const mobileMenu=()=>{
 
 }
 
+// preloader
+
+const spinner = (isTrue)=>{
+
+    const loader = document.getElementById('spinner')
+
+    
+    if(isTrue)
+    {
+        loader.classList.remove('hidden')
+    }
+    else{
+        loader.classList.add('hidden') 
+    }
+
+}
+
 
 // load categories and show on the menu
 
@@ -67,36 +84,42 @@ const showCategories = (categoryList)=>{
 
 const loadNewses = async(id,name) =>{
     try{
+        spinner(true)
         const url = `https://openapi.programming-hero.com/api/news/category/${id}`
         const res = await fetch(url)
-        const data = await res.json()
-        showNewses(data.data,name)
+        const newses = await res.json()
+        showNewses(newses.data,name)
     }
     catch(error){
         console.log(error)
     }
 }
 
-const showNewses = (data,name)=>{
+const showNewses = (newses,name)=>{
+    
     const section = document.getElementById('display-count')
+    
     section.innerHTML = `
 
     <h2 class="text-slate-700 font-semibold">
-       ${data.length} Newses found for category <span class="text-blue">${name}</span>
+       ${newses.length} Newses found for category <span class="text-blue">${name}</span>
       </h2>
     
     `
     const errorMsg = document.getElementById('error-msg')
-    if(data.length === 0){
+    if(newses.length === 0){
+        spinner(false)
         errorMsg.classList.remove('hidden')
-    }else{
+
+    }
+    else{
         errorMsg.classList.add('hidden')
 
     }
     const newContainer = document.getElementById('news-container')
     newContainer.textContent = ''
 
-    data.forEach(element=>{
+    newses.forEach(element=>{
 
         const {thumbnail_url,title,details,total_view,author} =element
 
@@ -152,7 +175,10 @@ const showNewses = (data,name)=>{
         `
 
         newContainer.appendChild(card)
+        
+        spinner(false)
 
+        
     })
 }
 
@@ -160,8 +186,8 @@ const loadDetails = async (newsId)=>{
     try{
         const url =  `https://openapi.programming-hero.com/api/news/${newsId}`
         const res = await fetch(url)
-        const data = await res.json()
-        showDetails(data.data[0])
+        const info = await res.json()
+        showDetails(info.data[0])
     }
     catch(error){
         console.log(error)
@@ -203,8 +229,6 @@ const showDetails = (information) =>{
         <p class="py-4">${details}</p>
 
     `
-    
-    
     
 }
 loadNewses('05','Entertainment')

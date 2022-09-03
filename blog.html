@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="bg-[#f6f6f6]">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ctgStories - The Mirror of Chattagram</title>
+        <!-- fontawsome cdn -->
+        <script src="https://kit.fontawesome.com/59949b2abf.js" crossorigin="anonymous"></script>
+      
+        <!-- Tailwind connection -->
+        <script src="https://cdn.tailwindcss.com"></script>
+      
+      
+        <!-- link daisyUi -->
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+      
+        <script>
+          tailwind.config = {
+            theme: {
+              extend: {
+                colors: {
+                  clifford: '#da373d',
+                  blue:'#5D5FEF'
+      
+                },
+                fontFamily: {
+                  'poppins': ['Poppins', 'sans-serif']
+                }
+              }
+            }
+          }
+        </script>
+      
+       
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+        </style>
+      </head>
+<body>
+    <header class="container mx-auto md:w-5/6 p-5">
+        <div class="navbar bg-transparent justify-between items-center p-2 md:p-5 space-x-5">
+          <div class="w-full md:w-1/2">
+            <a class="text-sm md:text-2xl font-bold font-poppins" href="index.html">ctg<span class="text-lg md:text-3xl font-bold text-primary font-poppins">Stories</span></a>
+          </div>
+          <div class="gap-5">
+            <ul class="menu menu-horizontal p-2 md:p-0 space-x-3 items-center">
+                <li class="text-sm md:text-base font-bold text-dark font-poppins"> <a class="p-1 hover:bg-transparent" href="index.html">Home</a></li>
+              <li class="text-sm md:text-base font-bold text-primary font-poppins">
+                <a href="blog.html" class="p-1 hover:bg-transparent">Blog</a>
+              </li>
+              <div class="avatar">
+                <div class="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img src="./img/profile.jpg"/>
+                </div>
+                <a href="javascript:void(0);" class="ml-3 lg:hidden icon hamburger"  onclick="mobileMenu()">
+                  <img src="./img/menu-2 1.svg" alt="">
+              </a>
+            </ul>
+          </div>
+        </div>
+        <hr>
+    </header>
+
+<main class="container mx-auto p-5 md:w-5/6">
+
+    <article>
+
+        <div class="card bg-base-100 shadow-xl col-span-2">
+            <div class="card-body">
+              <h2 class="card-title pb-2">Write the differece between var, let and constant</h2>
+              <div class="overflow-x-auto">
+                <table class="table w-full">
+                  <!-- head -->
+                  <thead>
+                    <tr>
+                        <th></th>
+                      <th>var</th>
+                      <th>let</th>
+                      <th>const</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- row 1 -->
+                    <tr>
+                      <th>Origin</th>
+                      <td>pre ES2015</td>
+                      <td>ES2015(ES6)</td>
+                      <td>ES2015(ES6)</td>
+                    </tr>
+                    <!-- row 2 -->
+                    <tr class="active">
+                      <th>Scope</th>
+                      <td>Global or function scope</td>
+                      <td>Block scope</td>
+                      <td>Block scope</td>
+                    </tr>
+                    <!-- row 3 -->
+                    <tr>
+                      <th>Hoisting</th>
+                      <td>Hoisted to top of it's execution and initialized as undefind</td>
+                      <td>Hoisted to top of it's execution and left uninitialized</td>
+                      <td>Hoisted to top of it's execution and left uninitialized</td>
+                    </tr>
+                    <!-- row 4 -->
+                    <tr>
+                      <th>Reassign within scope</th>
+                      <td>Yes</td>
+                      <td>No</td>
+                      <td>No</td>
+                    </tr>
+                    <!-- row 5 -->
+                    <tr>
+                      <th>Reassign with scope</th>
+                      <td>Yes</td>
+                      <td>Yes</td>
+                      <td>No</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+            </div>
+          </div>
+        
+    </article>
+
+    <section id="container" class="grid grid-cols-1 lg:grid-cols-2 my-5 gap-5">
+
+    </section>
+
+</main>
+
+<script src="./blog.js"></script>
+<script src="./script.js"></script>
+</body>
+
+
+</html>

@@ -34,7 +34,7 @@ const spinner = (isTrue)=>{
 const loadCategories = async()=>{
 
     try{
-            const res = await fetch('https://openapi.programming-hero.com/api/news/categories')
+            let res = await fetch('https://openapi.programming-hero.com/api/news/categories')
             const data = await res.json()
             showCategories (data.data.news_category) 
     }
@@ -49,13 +49,13 @@ const showCategories = (categoryList)=>{
 
     const menuContainer = document.getElementById('menu-list')
     menuContainer.innerHTML = `
-    <li class="menu px-4 py-1 font-semibold font-poppins text-md hover:cursor-pointer" onclick = "loadNewses('08','Home')">Home</li>
+    <li class="menu px-4 py-1 font-semibold font-poppins text-md hover:cursor-pointer" onclick = "loadNewses('08','All Newses')">Home</li>
     `
 
-   categoryList.forEach(element => {
+   categoryList.forEach(item => {
 
-    const id = element.category_id
-    const name = element.category_name
+    const id = item.category_id
+    const name = item.category_name
 
     const li = document.createElement('li')
     li.innerHTML = `
@@ -82,30 +82,30 @@ const showCategories = (categoryList)=>{
 
 }
 
-const loadNewses = async(id,name) =>{
+const loadNewses = async(id,categoryName) =>{
     try{
         spinner(true)
-        const url = `https://openapi.programming-hero.com/api/news/category/${id}`
-        const res = await fetch(url)
+        let url = `https://openapi.programming-hero.com/api/news/category/${id}`
+        let res = await fetch(url)
         const newses = await res.json()
-        showNewses(newses.data,name)
+        showNewses(newses.data,categoryName)
     }
     catch(error){
         console.log(error)
     }
 }
 
-const showNewses = (newses,name)=>{
-    
-    const section = document.getElementById('display-count')
-    
-    section.innerHTML = `
+const showNewses = (newses,categoryName)=>{
+    const countSection = document.getElementById('display-count')
+    countSection.innerHTML = `
 
     <h2 class="text-slate-700 font-semibold bg-white rounded p-4 my-5">
-       ${newses.length} Newses found for category <span class="text-blue">${name}</span>
+       ${newses.length} Newses found for category <span class="text-blue">${categoryName}</span>
       </h2>
     
     `
+    
+    
     const errorMsg = document.getElementById('error-msg')
     if(newses.length === 0){
         spinner(false)
@@ -184,7 +184,7 @@ const showNewses = (newses,name)=>{
 
 const loadDetails = async(newsId)=>{
     try{
-        const url =  `https://openapi.programming-hero.com/api/news/${newsId}`
+        let url =  `https://openapi.programming-hero.com/api/news/${newsId}`
         const response = await fetch(url)
         const info = await response.json()
         showDetails(info.data[0])

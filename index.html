@@ -44,19 +44,19 @@
   <header class="container mx-auto md:w-5/6 p-5">
     <div class="navbar bg-transparent justify-between items-center p-2 md:p-5 space-x-5">
       <div class="w-full md:w-1/2">
-        <a class="text-sm md:text-2xl font-bold font-poppins">ctg<span class="text-lg md:text-3xl font-bold text-primary font-poppins">Stories</span></a>
+        <a class="text-sm md:text-2xl font-bold font-poppins" href="index.html">ctg<span class="text-lg md:text-3xl font-bold text-primary font-poppins">Stories</span></a>
       </div>
       <div class="gap-5">
         <ul class="menu menu-horizontal p-2 md:p-0 space-x-3 items-center">
           <li class="text-sm md:text-base font-bold text-primary font-poppins">
-            Home
+            <a class="p-1 hover:bg-transparent" href="index.html">Home</a>
           </li>
-          <li class="text-sm md:text-base font-bold text-dark font-poppins">Blog</li>
+          <li class="text-sm md:text-base font-bold text-dark font-poppins"><a href="blog.html" class="p-1 hover:bg-transparent">Blog</a></li>
           <div class="avatar">
             <div class="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
               <img src="./img/profile.jpg"/>
             </div>
-            <a href="javascript:void(0);" class="ml-2 lg:hidden icon hamburger"  onclick="mobileMenu()">
+            <a href="javascript:void(0);" class="ml-3 lg:hidden icon hamburger"  onclick="mobileMenu()">
               <img src="./img/menu-2 1.svg" alt="">
           </a>
         </ul>
@@ -115,33 +115,7 @@
       <div id="news-container" class="grid grid-cols-1 gap-8">
 
         <!-- newses -->
-        <div class="card lg:card-side bg-base-100 shadow-xl">
-          <img src="https://placeimg.com/200/280/arch" alt="Movie">
-          <div class="card-body">
-            <h2 class="card-title">New movie is released!</h2>
-            <p>Click the button to watch on Jetflix app.</p>
-            <div class="card-actions justify-between grid grid-cols-6">
-              <div class="flex gap-5 col-span-3">
-              <div class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="https://placeimg.com/200/280/arch" />
-              </div>
-              <div class="description">
-                <h2 class="title">
-                  Md shipatul hasan shakib
-                </h2>
-                <p class="title">
-                 12,08,2022
-                </p>
-              </div>
-              </div>
-              <p class="text-dark text-lg font-bold">
-                <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 1.5M
-              </p>
-                <button class="btn btn-primary">Watch</button>
-                <button class="btn btn-primary">Watch</button>
-              </div>
-          </div>
-        </div>
+       
       </div>
       
     </section>

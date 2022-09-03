@@ -49,7 +49,7 @@ const showCategories = (categoryList)=>{
 
     const menuContainer = document.getElementById('menu-list')
     menuContainer.innerHTML = `
-    <li class="menu px-4 py-1 font-semibold font-poppins text-md hover:cursor-pointer" onclick = "loadNewses('08','All Newses')">Home</li>
+    <li class="menu px-4 py-1 font-semibold font-poppins text-blue bg-purple-600 bg-opacity-10 rounded text-md hover:cursor-pointer" onclick = "loadNewses('08')">Home</li>
     `
 
    categoryList.forEach(item => {
@@ -66,7 +66,7 @@ const showCategories = (categoryList)=>{
   
    });
 
-//    active function
+//    active function text-blue bg-purple-600 bg-opacity-10 rounded
 
    const tab = menuContainer.querySelectorAll('.menu')
    tab.forEach(item=>{
@@ -84,7 +84,7 @@ const showCategories = (categoryList)=>{
 
 // load news
 
-const loadNewses = async(id,categoryName) =>{
+const loadNewses = async(id,categoryName="Today") =>{
     try{
         spinner(true)
         let url = `https://openapi.programming-hero.com/api/news/category/${id}`
@@ -101,12 +101,12 @@ const loadNewses = async(id,categoryName) =>{
 
 // show news in feeds
 
-const showNewses = (newses,categoryName)=>{
+    const showNewses = (newses,categoryName)=>{
     const countSection = document.getElementById('display-count')
     countSection.innerHTML = `
 
     <h2 class="text-slate-700 font-semibold bg-white rounded p-4 my-5">
-       ${newses.length} Newses found for category <span class="text-blue">${categoryName}</span>
+       ${newses.length} Newses found for <span class="text-blue">${categoryName }</span>
       </h2>
     
     `
@@ -143,22 +143,22 @@ const showNewses = (newses,categoryName)=>{
           <h2 class="card-title">${title}</h2>
           <p>${details.length > 330 ? `<p>${details.slice(0,234)}<p><br><p> ${details.slice(234,330) + ' . . .'}</p>` : details}</p>
           
-        <div class="card-actions justify-between items-center space-y-3 mt-4">
+        <div class="card-actions justify-between items-center space-y-3 lg:space-y-0 mt-4">
             <div class="w-full lg:w-1/2 flex gap-5">
                 <div class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img src="${img}" />
                 </div>
                 <div class="description">
-                <h2 class="font-bold text-dark">
+                <h2 class="font-bold text-dark font-poppins">
                 ${name ? name :'no data found'}
                 </h2>
-                <p class="font-semibold text-slate-400">
+                <p class="font-semibold text-slate-400 font-poppins">
                 ${published_date ? date.toDateString() : 'no data found'}
                 </p>
                 </div>
             </div>
                 <div>
-                    <p class="text-dark text-lg font-bold">
+                    <p class="text-dark text-lg font-bold font-poppins">
                     <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
                     ${total_view ? total_view : 'not found'}
                     </p>
@@ -188,8 +188,9 @@ const showNewses = (newses,categoryName)=>{
         
     })
 }
+// popup loading
 
-const loadDetails = async(newsId)=>{
+    const loadDetails = async(newsId)=>{
     try{
         let url =  `https://openapi.programming-hero.com/api/news/${newsId}`
         const response = await fetch(url)
@@ -201,6 +202,8 @@ const loadDetails = async(newsId)=>{
     }
 }
 
+// popup showing
+
 const showDetails = (information) =>{
          
     const mydate = new Date(information.author.published_date)
@@ -210,30 +213,33 @@ const showDetails = (information) =>{
     container.innerHTML = `
     
         <label for="modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-        <div class = "h-5/6" ><img src="${information.image_url}" class="h-[200px] lg:h-[500px] w-full" alt="${information.title}"/></div>
-        <div class = "lg:flex justify-between items-center gap-5 space-y-5 py-5">
-        <div class = "w-3/4 flex items-center gap-5">
-              <img src="${information.author.img}" class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" />
-              <h2 class="font-bold text-dark">
-              ${information.author.name ? information.author.name :'no data found'}
-              </h2>
+        <div class = "h-5/6" ><img src="${information.image_url}" class="h- [200px] lg:h-[500px] w-full" alt="${information.title}"/>
         </div>
-        <div class = "lg:flex gap-5">
-        <p class="font-bold">
-        ${information.author.published_date ? mydate.toDateString() : 'no data found'}
-       </p>
-       <p class="text-dark text-lg font-bold">
-         <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
-         ${information.total_view ? information.total_view : 'not found'}
-       </p>
-       <p class="text-blue font-bold">Ratings: <span class="text-orange-500">${information.rating.number}<sup><i class="fa-solid fa-star text-[10px]"></i></sup><span></p></div>
+
+        <div class = "mt-4 lg:flex justify-between items-center gap-5 space-y-5 py-5 px-2">
+            <div class = "w-3/4 lg:w-auto flex items-center gap-5">
+                <img src="${information.author.img}" class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" />
+                <h2 class="font-bold text-dark font-poppins">
+                ${information.author.name ? information.author.name :'no data found'}
+                </h2>
+            </div>
+            <div class = "lg:flex gap-5">
+                <p class="font-bold font-poppins">
+                ${information.author.published_date ? mydate.toDateString() : 'no data found'}
+                </p>
+                <p class="text-dark text-lg font-bold">
+                <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
+                ${information.total_view ? information.total_view : 'not found'}
+                </p>
+                <p class="text-blue font-bold">Ratings: <span class="text-orange-500">${information.rating.number}<sup><i class="fa-solid fa-star text-[10px]"></i></sup><span>
+                </p>
+            </div>
         </div>
         <h3 class="text-lg font-bold">${information.title}</h3>
         <p class="py-4">${information.details}</p>
 
-    `
-    
+    `  
 }
-loadNewses('05','Entertainment')
+loadNewses('08')
 loadCategories()
 

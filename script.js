@@ -82,18 +82,24 @@ const showCategories = (categoryList)=>{
 
 }
 
+// load news
+
 const loadNewses = async(id,categoryName) =>{
     try{
         spinner(true)
         let url = `https://openapi.programming-hero.com/api/news/category/${id}`
         let res = await fetch(url)
         const newses = await res.json()
-        showNewses(newses.data,categoryName)
+        showNewses(newses.data.sort((a,b)=>{
+            return b.total_view - a.total_view
+        }),categoryName)
     }
     catch(error){
         console.log(error)
     }
 }
+
+// show news in feeds
 
 const showNewses = (newses,categoryName)=>{
     const countSection = document.getElementById('display-count')
@@ -104,7 +110,7 @@ const showNewses = (newses,categoryName)=>{
       </h2>
     
     `
-    
+    // error handling
     
     const errorMsg = document.getElementById('error-msg')
     if(newses.length === 0){
@@ -116,6 +122,7 @@ const showNewses = (newses,categoryName)=>{
         errorMsg.classList.add('hidden')
 
     }
+
     const newContainer = document.getElementById('news-container')
     newContainer.textContent = ''
 

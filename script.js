@@ -49,7 +49,7 @@ const showCategories = (categoryList)=>{
 
     const menuContainer = document.getElementById('menu-list')
     menuContainer.innerHTML = `
-    <li class="menu px-4 py-1 font-semibold font-poppins text-blue bg-purple-600 bg-opacity-10 rounded text-md hover:cursor-pointer" onclick = "loadNewses('08')">Home</li>
+    <li class="menu px-4 py-1 font-semibold font-poppins text-primary bg-purple-600 bg-opacity-10 rounded text-md hover:cursor-pointer" onclick = "loadNewses('08')">Home</li>
     `
 
    categoryList.forEach(item => {
@@ -66,14 +66,14 @@ const showCategories = (categoryList)=>{
   
    });
 
-//    active function text-blue bg-purple-600 bg-opacity-10 rounded
+//    active function text-primary bg-purple-600 bg-opacity-10 rounded
 
    const tab = menuContainer.querySelectorAll('.menu')
    tab.forEach(item=>{
        item.addEventListener('click',(e)=>{
-           tab.forEach(menu=>menu.classList.remove('text-blue', 'bg-purple-600', 'bg-opacity-10', 'rounded'))
+           tab.forEach(menu=>menu.classList.remove('text-primary', 'bg-purple-600', 'bg-opacity-10', 'rounded'))
 
-           e.target.classList.add('text-blue', 'bg-purple-600', 'bg-opacity-10', 'rounded')
+           e.target.classList.add('text-primary', 'bg-purple-600', 'bg-opacity-10', 'rounded')
 
            
        })
@@ -106,7 +106,7 @@ const loadNewses = async(id,categoryName="Today") =>{
     countSection.innerHTML = `
 
     <h2 class="text-slate-700 font-semibold bg-white rounded p-4 my-5">
-       ${newses.length} Newses found for <span class="text-blue">${categoryName }</span>
+       ${newses.length} Newses found for <span class="text-primary">${categoryName }</span>
       </h2>
     
     `
@@ -159,7 +159,7 @@ const loadNewses = async(id,categoryName="Today") =>{
             </div>
                 <div>
                     <p class="text-dark text-lg font-bold font-poppins">
-                    <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
+                    <i class="fa-sharp fa-solid fa-eye text-primary text-lg"></i> 
                     ${total_view ? total_view +'k' : 'not found'}
                     </p>
                 </div>
@@ -228,7 +228,7 @@ const showDetails = (information) =>{
                 ${information.author.published_date ? mydate.toDateString() : 'no data found'}
                 </p>
                 <p class="text-dark text-sm font-bold">
-                <i class="fa-sharp fa-solid fa-eye text-blue text-sm"></i> 
+                <i class="fa-sharp fa-solid fa-eye text-primary text-sm"></i> 
                  ${information.total_view ? information.total_view + 'k' : 'not found'}
                 </p>
                  <p class="text-orange-500 font-bold text-sm">${information.rating.number}<sup><i class="fa-solid fa-star"></i></sup><p>

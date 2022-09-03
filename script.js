@@ -32,7 +32,7 @@ const showCategories = (categoryList)=>{
 
     const menuContainer = document.getElementById('menu-list')
     menuContainer.innerHTML = `
-    <li class="font-semibold font-poppins text-md text-slate-700 hover:cursor-pointer" onclick = "loadDetails('08','Home')">Home</li>
+    <li class="font-semibold font-poppins text-md text-slate-700 hover:cursor-pointer" onclick = "loadNewses('08','Home')">Home</li>
     `
 
    categoryList.forEach(element => {
@@ -120,7 +120,7 @@ const showNewses = (data,name)=>{
             </div>
             <div class="description">
               <h2 class="font-bold text-dark">
-              ${name === null ||name === '' ?'no data found':name}
+              ${name ? name :'no data found'}
               </h2>
               <p class="font-semibold text-slate-400">
                ${published_date ? date.toDateString() : 'no data found'}
@@ -170,7 +170,41 @@ const loadDetails = async (newsId)=>{
 
 const showDetails = (information) =>{
 
-    const {title, image_url, total_view, details, author} = information
+    const {title, image_url, total_view,rating, details, author} = information
+    const {name,img,published_date} = author
+         
+    const date = new Date(published_date)
+
+    const container = document.getElementById('details-container')
+
+    container.innerHTML = `
+    
+        <label for="modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        <div class = "h-5/6" ><img src="${image_url}" class="h-[500px] w-full" alt="${title}" /></div>
+        <div class = "flex justify-between items-center gap-5 py-5">
+        <div class = "flex items-center gap-5">
+              <img src="${img}"class="overflow-hidden w-16 h-16 rounded-full ring ring-primary   ring-offset-base-100 ring-offset-2" />
+              <h2 class="font-bold text-dark">
+              ${name ? name :'no data found'}
+              </h2>
+        </div>
+        <div class = "flex gap-5">
+        <p class="font-bold">
+        ${published_date ? date.toDateString() : 'no data found'}
+       </p>
+       <p class="text-dark text-lg font-bold">
+         <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
+         ${total_view ? total_view : 'not found'}
+       </p>
+       <p class="text-blue font-bold">Ratings: <span class="text-orange-500">${rating.number} <sup><i class="fa-solid fa-star text-[10px]"></i></sup><span></p></div>
+        
+            </div>
+        <h3 class="text-lg font-bold">${title}</h3>
+        <p class="py-4">${details}</p>
+
+    `
+    
+    
     
 }
 loadNewses('05','Entertainment')

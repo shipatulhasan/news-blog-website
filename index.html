@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" class="bg-[#f6f6f6]">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ctgStories - The Mirror of Chattagram</title>
+  <!-- fontawsome cdn -->
+  <script src="https://kit.fontawesome.com/59949b2abf.js" crossorigin="anonymous"></script>
+
+  <!-- Tailwind connection -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+
+  <!-- link daisyUi -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            clifford: '#da373d',
+            blue:'#5D5FEF'
+
+          },
+          fontFamily: {
+            'poppins': ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+ 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+  </style>
+</head>
+
+<body>
+  <header class="container mx-auto md:w-5/6 p-5">
+    <div class="navbar bg-transparent p-5">
+      <div class="flex-1">
+        <a class="text-2xl font-bold font-poppins">ctg<span class="text-3xl font-bold text-blue font-poppins">News</span></a>
+      </div>
+      <div class="flex-none gap-5">
+        <ul class="menu menu-horizontal p-0 space-x-4">
+          <li class="text-md font-bold text-blue font-poppins">
+            Home
+          </li>
+          <li class="text-md font-bold text-dark font-poppins">Blog</li>
+        </ul>
+        <div class="dropdown dropdown-end">
+          <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+            <div class="w-10 rounded-full">
+              <img src="./img/profile.jpg" />
+            </div>
+          </label>
+          <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+            <li>
+              <a class="justify-between font-poppins">
+                Profile
+                <span class="badge font-poppins">New</span>
+              </a>
+            </li>
+            <li class="font-poppins"><a>Settings</a></li>
+            <li class="font-poppins"><a>Logout</a></li>
+          </ul>
+        </div>
+      </div>
+      <a href="javascript:void(0);" class="lg:hidden icon hamburger"  onclick="mobileMenu()">
+        <img src="./img/menu-2 1.svg" alt="">
+    </a>
+    </div>
+    <hr>
+    <section id="categories" class=" text-center py-5">
+      <div class="hidden lg:block" id="myLinks">
+
+      <ul class=" lg:flex lg:justify-around items-center" id="menu-list">
+        
+      </ul>
+
+
+    </div>
+    </section>
+
+    <section class="bg-white rounded p-4 my-5" id="display-count">
+      
+    </section>
+  </header>
+
+  <main class="container mx-auto p-5 md:w-5/6">
+    
+
+    <section id="error-msg" class="hidden container mx-auto py-5">
+
+    </section>
+
+    <section>
+      <div id="news-container" class="grid grid-cols-1 gap-8">
+       
+        <!-- newses -->
+        <div class="card lg:card-side bg-base-100 shadow-xl">
+          <img src="https://placeimg.com/200/280/arch" alt="Movie">
+          <div class="card-body">
+            <h2 class="card-title">New movie is released!</h2>
+            <p>Click the button to watch on Jetflix app.</p>
+            <div class="card-actions justify-between grid grid-cols-6">
+              <div class="flex gap-5 col-span-3">
+              <div class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src="https://placeimg.com/200/280/arch" />
+              </div>
+              <div class="description">
+                <h2 class="title">
+                  Md shipatul hasan shakib
+                </h2>
+                <p class="title">
+                 12,08,2022
+                </p>
+              </div>
+              </div>
+                <button class="btn btn-primary">Watch</button>
+                <button class="btn btn-primary">Watch</button>
+                <button class="btn btn-primary">Watch</button>
+              </div>
+          </div>
+        </div>
+      </div>
+   
+    </section>
+
+    <!-- modal -->
+    <input type="checkbox" id="modal-3" class="modal-toggle" />
+    <div class="modal modal-middle">
+    <div class="modal-box relative " id="detail-container">
+     
+      <!-- <div class="modal-action">
+        <label for="my-modal-6" class="btn">Yay!</label>
+      </div> -->
+  </div>
+</div>
+
+  </main>
+
+<script src="./script.js"></script>
+</body>
+
+</html>

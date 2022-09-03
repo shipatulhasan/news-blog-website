@@ -44,7 +44,7 @@ const loadCategories = async()=>{
 
 }
 
-
+// categori show
 const showCategories = (categoryList)=>{
 
     const menuContainer = document.getElementById('menu-list')
@@ -145,14 +145,14 @@ const loadNewses = async(id,categoryName="Today") =>{
           
         <div class="card-actions justify-between items-center space-y-3 lg:space-y-0 mt-4">
             <div class="w-full lg:w-1/2 flex gap-5">
-                <div class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <div class="overflow-hidden w-12 h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                 <img src="${img}" />
                 </div>
                 <div class="description">
-                <h2 class="font-bold text-dark font-poppins">
+                <h2 class="font-bold text-dark text-lg font-poppins">
                 ${name ? name :'no data found'}
                 </h2>
-                <p class="font-semibold text-slate-400 font-poppins">
+                <p class="text-sm text-slate-500 font-poppins">
                 ${published_date ? date.toDateString() : 'no data found'}
                 </p>
                 </div>
@@ -160,7 +160,7 @@ const loadNewses = async(id,categoryName="Today") =>{
                 <div>
                     <p class="text-dark text-lg font-bold font-poppins">
                     <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
-                    ${total_view ? total_view : 'not found'}
+                    ${total_view ? total_view +'k' : 'not found'}
                     </p>
                 </div>
             <div>
@@ -218,20 +218,20 @@ const showDetails = (information) =>{
 
         <div class = "mt-4 lg:flex justify-between items-center gap-5 space-y-5 py-5 px-2">
             <div class = "w-3/4 lg:w-auto flex items-center gap-5">
-                <img src="${information.author.img}" class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" />
-                <h2 class="font-bold text-dark font-poppins">
+                <img src="${information.author.img}" class="overflow-hidden w-12 h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" />
+                <h2 class="text-lg font-bold text-dark font-poppins">
                 ${information.author.name ? information.author.name :'no data found'}
                 </h2>
             </div>
-            <div class = "lg:flex gap-5">
-                <p class="font-bold font-poppins">
+            <div class = "lg:flex gap-5 items-center">
+                <p class="font-bold font-poppins text-sm">
                 ${information.author.published_date ? mydate.toDateString() : 'no data found'}
                 </p>
-                <p class="text-dark text-lg font-bold">
-                <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
-                ${information.total_view ? information.total_view : 'not found'}
+                <p class="text-dark text-sm font-bold">
+                <i class="fa-sharp fa-solid fa-eye text-blue text-sm"></i> 
+                 ${information.total_view ? information.total_view + 'k' : 'not found'}
                 </p>
-                <p class="text-blue font-bold">Ratings: <span class="text-orange-500">${information.rating.number}<sup><i class="fa-solid fa-star text-[10px]"></i></sup><span>
+                 <p class="text-orange-500 font-bold text-sm">${information.rating.number}<sup><i class="fa-solid fa-star"></i></sup><p>
                 </p>
             </div>
         </div>

@@ -81,23 +81,40 @@ const showDetails = (data,name)=>{
           <h2 class="card-title">${title}</h2>
           <p>${details.length > 330 ? `<p>${details.slice(0,234)}<p><br><p> ${details.slice(234,330) + ' . . .'}</p>` : details}</p>
           
-          <div class="card-actions justify-between items-center grid grid-cols-6 mt-4">
-          <div class="flex gap-5 col-span-3">
-              <div class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="${img}" />
+          <div class="card-actions justify-between items-center mt-4">
+        <div class="flex gap-5">
+            <div class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <img src="${img}" />
+            </div>
+            <div class="description">
+              <h2 class="">
+              ${name === null ||name === '' ?'no data found':name}
+              </h2>
+              <p class="title">
+               ${published_date ? published_date : 'no data found'}
+              </p>
+            </div>
+            </div>
+            <div>
+              <p class="text-dark text-lg font-bold">
+                <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
+                ${total_view ? total_view : 'not found'}
+              </p>
+            </div>
+              <div>
+              <p class="text-orange-500">
+              <i class="fa-solid fa-star filled"></i>
+              <i class="fa-solid fa-star filled"></i>
+              <i class="fa-solid fa-star filled"></i>
+              <i class="fa-solid fa-star filled"></i>
+              <i class="fa-solid fa-star-half-stroke filled"></i>
+          </p>
               </div>
-              <div class="description">
-                <h2 class="">
-                ${name === null ||name === '' ?'no data found':name}
-                </h2>
-                <p class="title">
-                 ${published_date === null ||published_date === '' ?'no data found':published_date}
-                </p>
+              <div>
+
+                <label for="modal-3" class="modal-button hover:cursor-pointer"><i class="fa-solid fa-arrow-right text-primary text-3xl"></i></label>
               </div>
-              </div>
-           
-            <label for="modal-3" class="modal-button py-2 px-4 btn-primary rounded text-white hover:cursor-pointer">view details</label>
-          </div>
+        </div>
         </div>
         
         `

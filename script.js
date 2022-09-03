@@ -136,37 +136,37 @@ const showNewses = (newses,name)=>{
           <h2 class="card-title">${title}</h2>
           <p>${details.length > 330 ? `<p>${details.slice(0,234)}<p><br><p> ${details.slice(234,330) + ' . . .'}</p>` : details}</p>
           
-          <div class="card-actions justify-between items-center mt-4">
-        <div class="flex gap-5">
-            <div class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="${img}" />
+        <div class="card-actions justify-between items-center space-y-3 mt-4">
+            <div class="w-full lg:w-1/2 flex gap-5">
+                <div class="overflow-hidden w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src="${img}" />
+                </div>
+                <div class="description">
+                <h2 class="font-bold text-dark">
+                ${name ? name :'no data found'}
+                </h2>
+                <p class="font-semibold text-slate-400">
+                ${published_date ? date.toDateString() : 'no data found'}
+                </p>
+                </div>
             </div>
-            <div class="description">
-              <h2 class="font-bold text-dark">
-              ${name ? name :'no data found'}
-              </h2>
-              <p class="font-semibold text-slate-400">
-               ${published_date ? date.toDateString() : 'no data found'}
-              </p>
-            </div>
-            </div>
+                <div>
+                    <p class="text-dark text-lg font-bold">
+                    <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
+                    ${total_view ? total_view : 'not found'}
+                    </p>
+                </div>
             <div>
-              <p class="text-dark text-lg font-bold">
-                <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
-                ${total_view ? total_view : 'not found'}
-              </p>
-            </div>
-              <div>
               <p class="text-orange-500">
               <i class="fa-solid fa-star filled"></i>
               <i class="fa-solid fa-star filled"></i>
               <i class="fa-solid fa-star filled"></i>
               <i class="fa-solid fa-star filled"></i>
               <i class="fa-solid fa-star-half-stroke filled"></i>
-          </p>
-              </div>
-              <div>
+              </p>
+            </div>
 
+            <div>
                 <label for="modal-3" class="modal-button hover:cursor-pointer" onclick="loadDetails('${element._id}')"><i class="fa-solid fa-arrow-right text-primary text-3xl"></i></label>
               </div>
         </div>
@@ -203,15 +203,15 @@ const showDetails = (information) =>{
     container.innerHTML = `
     
         <label for="modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-        <div class = "h-5/6" ><img src="${information.image_url}" class="h-[500px] w-full" alt="${information.title}" /></div>
-        <div class = "flex justify-between items-center gap-5 py-5">
+        <div class = "h-5/6" ><img src="${information.image_url}" class="h-[200px] lg:h-[500px] w-full" alt="${information.title}"/></div>
+        <div class = "lg:flex justify-between items-center gap-5 space-y-5 py-5">
         <div class = "flex items-center gap-5">
               <img src="${information.author.img}"class="overflow-hidden w-16 h-16 rounded-full ring ring-primary   ring-offset-base-100 ring-offset-2" />
               <h2 class="font-bold text-dark">
               ${information.author.name ? information.author.name :'no data found'}
               </h2>
         </div>
-        <div class = "flex gap-5">
+        <div class = "lg:flex gap-5">
         <p class="font-bold">
         ${information.author.published_date ? mydate.toDateString() : 'no data found'}
        </p>
@@ -219,9 +219,8 @@ const showDetails = (information) =>{
          <i class="fa-sharp fa-solid fa-eye text-blue text-lg"></i> 
          ${information.total_view ? information.total_view : 'not found'}
        </p>
-       <p class="text-blue font-bold">Ratings: <span class="text-orange-500">${information.rating.number} <sup><i class="fa-solid fa-star text-[10px]"></i></sup><span></p></div>
-        
-            </div>
+       <p class="text-blue font-bold">Ratings: <span class="text-orange-500">${information.rating.number}<sup><i class="fa-solid fa-star text-[10px]"></i></sup><span></p></div>
+        </div>
         <h3 class="text-lg font-bold">${information.title}</h3>
         <p class="py-4">${information.details}</p>
 

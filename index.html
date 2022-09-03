@@ -42,13 +42,13 @@
 <body>
  
   <header class="container mx-auto md:w-5/6 p-5">
-    <div class="navbar bg-transparent p-5">
-      <div class="flex-1">
-        <a class="text-2xl font-bold font-poppins">ctg<span class="text-3xl font-bold text-blue font-poppins">News</span></a>
+    <div class="navbar bg-transparent flex justify-between items-center p-2 md:p-5 space-x-5">
+      <div class="w-1/2">
+        <a class="text-sm md:text-2xl font-bold font-poppins">ctg<span class="text-xl md:text-3xl font-bold text-primary font-poppins">Stories</span></a>
       </div>
-      <div class="flex-none gap-5">
+      <div class=" gap-5">
         <ul class="menu menu-horizontal p-0 space-x-4">
-          <li class="text-md font-bold text-blue font-poppins">
+          <li class="text-md font-bold text-primary font-poppins">
             Home
           </li>
           <li class="text-md font-bold text-dark font-poppins">Blog</li>
@@ -79,7 +79,7 @@
     <section id="categories" class=" text-center py-5">
       <div class="hidden lg:block" id="myLinks">
 
-      <ul class=" lg:flex lg:justify-around items-center" id="menu-list">
+      <ul class="text-left lg:text-center lg:flex lg:justify-around items-center space-y-4 lg:space-y-0" id="menu-list">
         
       </ul>
 
@@ -91,8 +91,8 @@
       
     </section>
 
-    <section class="container mx-auto flex flex-wrap justify-between">
-      <div class="w-1/2">
+    <section class="container mx-auto flex flex-wrap justify-between space-y-4">
+      <div class="w-11/12 md:w-1/2">
         <p class="text-lg font-bold">
           Sort By View: <select class="select w-6/12 max-w-xs" disabled>
             <option>Default</option>

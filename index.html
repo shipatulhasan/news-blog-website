@@ -42,11 +42,11 @@
 <body>
  
   <header class="container mx-auto md:w-5/6 p-5">
-    <div class="navbar bg-transparent flex justify-between items-center p-2 md:p-5 space-x-5">
-      <div class="w-1/2">
-        <a class="text-sm md:text-2xl font-bold font-poppins">ctg<span class="text-xl md:text-3xl font-bold text-primary font-poppins">Stories</span></a>
+    <div class="navbar bg-transparent justify-between items-center p-2 md:p-5 space-x-5">
+      <div class="w-full md:w-1/2">
+        <a class="text-sm md:text-2xl font-bold font-poppins">ctg<span class="text-lg md:text-3xl font-bold text-primary font-poppins">Stories</span></a>
       </div>
-      <div class=" gap-5">
+      <div class="gap-2 md:gap-5">
         <ul class="menu menu-horizontal p-0 space-x-4">
           <li class="text-md font-bold text-primary font-poppins">
             Home
@@ -55,7 +55,7 @@
         </ul>
         <div class="dropdown dropdown-end">
           <label tabindex="0" class="btn btn-ghost btn-circle avatar">
-            <div class="w-10 rounded-full">
+            <div class="w-10 h-10 rounded-full">
               <img src="./img/profile.jpg" />
             </div>
           </label>
@@ -71,9 +71,11 @@
           </ul>
         </div>
       </div>
-      <a href="javascript:void(0);" class="lg:hidden icon hamburger"  onclick="mobileMenu()">
-        <img src="./img/menu-2 1.svg" alt="">
-    </a>
+      <div>
+        <a href="javascript:void(0);" class="lg:hidden icon hamburger"  onclick="mobileMenu()">
+          <img src="./img/menu-2 1.svg" alt="">
+      </a>
+      </div>
     </div>
     <hr>
     <section id="categories" class=" text-center py-5">

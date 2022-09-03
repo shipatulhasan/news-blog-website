@@ -16,11 +16,14 @@ const mobileMenu=()=>{
 
 const loadCategories = async()=>{
 
-    const res = await fetch('https://openapi.programming-hero.com/api/news/categories')
-
-    const data = await res.json()
-
-    showCategories (data.data.news_category) 
+    try{
+            const res = await fetch('https://openapi.programming-hero.com/api/news/categories')
+            const data = await res.json()
+            showCategories (data.data.news_category) 
+    }
+    catch(error){
+        console.log(error)
+    }
 
 }
 
@@ -29,7 +32,7 @@ const showCategories = (categoryList)=>{
 
     const menuContainer = document.getElementById('menu-list')
     menuContainer.innerHTML = `
-    <li class="font-semibold font-poppins text-md text-slate-700 hover:cursor-pointer">Home</li>
+    <li class="font-semibold font-poppins text-md text-slate-700 hover:cursor-pointer" onclick = "loadDetails('08','Home')">Home</li>
     `
 
    categoryList.forEach(element => {
@@ -39,38 +42,67 @@ const showCategories = (categoryList)=>{
 
     const li = document.createElement('li')
     li.innerHTML = `
-    <li class="font-semibold font-poppins text-md text-slate-700 hover:cursor-pointer" onclick="loadDetails('${id}','${name}')">${name}</li>
+    <li class="menu font-semibold font-poppins text-md hover:cursor-pointer px-4 py-1" onclick="loadNewses('${id}','${name}')">${name}</li>
     `
     
     menuContainer.appendChild(li)
   
    });
+
+//    active function
+
+   const tab = menuContainer.querySelectorAll('.menu')
+   tab.forEach(item=>{
+       item.addEventListener('click',(e)=>{
+           tab.forEach(menu=>menu.classList.remove('text-blue', 'bg-purple-600', 'bg-opacity-10', 'rounded'))
+
+           e.target.classList.add('text-blue', 'bg-purple-600', 'bg-opacity-10', 'rounded')
+
+           
+       })
+
+   })
+
 }
 
-const loadDetails = async(id,name) =>{
-    const url = `https://openapi.programming-hero.com/api/news/category/${id}`
-    const res = await fetch(url)
-    const data = await res.json()
-    showDetails(data.data,name)
+const loadNewses = async(id,name) =>{
+    try{
+        const url = `https://openapi.programming-hero.com/api/news/category/${id}`
+        const res = await fetch(url)
+        const data = await res.json()
+        showNewses(data.data,name)
+    }
+    catch(error){
+        console.log(error)
+    }
 }
 
-const showDetails = (data,name)=>{
+const showNewses = (data,name)=>{
     const section = document.getElementById('display-count')
     section.innerHTML = `
 
     <h2 class="text-slate-700 font-semibold">
-       ${data.length} items found for category <span class="text-blue">${name}</span>
+       ${data.length} Newses found for category <span class="text-blue">${name}</span>
       </h2>
     
     `
+    const errorMsg = document.getElementById('error-msg')
+    if(data.length === 0){
+        errorMsg.classList.remove('hidden')
+    }else{
+        errorMsg.classList.add('hidden')
+
+    }
     const newContainer = document.getElementById('news-container')
     newContainer.textContent = ''
 
     data.forEach(element=>{
-        console.log(element)
 
-        const {thumbnail_url,title,details,image_url,total_view,rating,author} =element
+        const {thumbnail_url,title,details,total_view,author} =element
+
         const {name,img,published_date} = author
+         
+        const date = new Date(published_date)
 
         const card = document.createElement('div')
         card.className = "card lg:card-side bg-base-100 shadow-xl"
@@ -87,11 +119,11 @@ const showDetails = (data,name)=>{
               <img src="${img}" />
             </div>
             <div class="description">
-              <h2 class="">
+              <h2 class="font-bold text-dark">
               ${name === null ||name === '' ?'no data found':name}
               </h2>
-              <p class="title">
-               ${published_date ? published_date : 'no data found'}
+              <p class="font-semibold text-slate-400">
+               ${published_date ? date.toDateString() : 'no data found'}
               </p>
             </div>
             </div>
@@ -112,7 +144,7 @@ const showDetails = (data,name)=>{
               </div>
               <div>
 
-                <label for="modal-3" class="modal-button hover:cursor-pointer"><i class="fa-solid fa-arrow-right text-primary text-3xl"></i></label>
+                <label for="modal-3" class="modal-button hover:cursor-pointer" onclick="loadDetails('${element._id}')"><i class="fa-solid fa-arrow-right text-primary text-3xl"></i></label>
               </div>
         </div>
         </div>
@@ -124,6 +156,23 @@ const showDetails = (data,name)=>{
     })
 }
 
+const loadDetails = async (newsId)=>{
+    try{
+        const url =  `https://openapi.programming-hero.com/api/news/${newsId}`
+        const res = await fetch(url)
+        const data = await res.json()
+        showDetails(data.data[0])
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+const showDetails = (information) =>{
+
+    const {title, image_url, total_view, details, author} = information
+    
+}
+loadNewses('05','Entertainment')
 loadCategories()
 
-{/* <p>${details.length > 200 ?details.slice(0,100) +". . ." : details }</p> */}

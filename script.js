@@ -157,7 +157,7 @@ const showNewses = (newses, categoryName) => {
             </div>
                 <div>
                     <p class="text-dark text-lg font-bold font-poppins">
-                    <i class="fa-sharp fa-solid fa-eye text-primary text-base md:text-lg"></i> 
+                    <i class="fa-sharp fa-solid fa-eye text-primary "></i> 
                     ${total_view ? total_view +'k' : 'not found'}
                     </p>
                 </div>

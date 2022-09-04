@@ -147,7 +147,7 @@ const showNewses = (newses, categoryName) => {
                 <img src="${img}" />
                 </div>
                 <div class="description">
-                <h2 class="font-bold text-dark text-lg font-poppins">
+                <h2 class="font-bold text-dark text-sm md:text-lg font-poppins">
                 ${name ? name :'no data found'}
                 </h2>
                 <p class="text-sm text-slate-500 font-poppins">
@@ -218,9 +218,9 @@ const showDetails = (information) => {
         </div>
 
         <div class = "mt-4 lg:flex justify-between items-center gap-5 space-y-5 py-5 px-2">
-            <div class = "w-3/4 lg:w-auto flex items-center gap-5">
+            <div class = "w-full lg:w-auto flex items-center gap-5">
                 <img src="${information.author.img}" class="overflow-hidden w-12 h-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2" />
-                <h2 class="text-lg font-bold text-dark font-poppins">
+                <h2 class="text-sm md:text-lg font-bold text-dark font-poppins">
                 ${information.author.name ? information.author.name :'no data found'}
                 </h2>
             </div>

@@ -147,17 +147,17 @@ const showNewses = (newses, categoryName) => {
                 <img src="${img}" />
                 </div>
                 <div class="description">
-                <h2 class="font-bold text-dark text-sm md:text-lg font-poppins">
+                <h2 class="font-bold text-dark text-base md:text-lg font-poppins">
                 ${name ? name :'no data found'}
                 </h2>
-                <p class="text-sm text-slate-500 font-poppins">
+                <p class="text-xs md:text-sm text-slate-500 font-poppins">
                 ${published_date ? date.toDateString() : 'no data found'}
                 </p>
                 </div>
             </div>
                 <div>
                     <p class="text-dark text-lg font-bold font-poppins">
-                    <i class="fa-sharp fa-solid fa-eye text-primary text-lg"></i> 
+                    <i class="fa-sharp fa-solid fa-eye text-primary text-base md:text-lg"></i> 
                     ${total_view ? total_view +'k' : 'not found'}
                     </p>
                 </div>
